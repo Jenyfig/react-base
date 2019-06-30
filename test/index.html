@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<script src="./vue.js"></script>
+
+<body>
+  <div id="app">
+
+    <div>
+      <input v-model="unname">
+      <button @click="add">添加</button>
+    </div>
+    <ul>
+      <li v-for="it  in  list "  ::key="it.id">
+        <input type="checkbox">
+        编号:{{it.id}} ===姓名:{{it.name}}
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        unname: '',
+        list: [{
+          id: 0,
+          name: '嬴政'
+        }, {
+          id: 1,
+          name: '毋庸'
+        }, {
+          id: 2,
+          name: '码农'
+        }]
+      },
+      methods: {
+        add() {
+          var newName = {
+            id: this.list.length,
+            name: this.unname
+          }
+          this.list.unshift(newName)
+        }
+      },
+
+
+
+    })
+  </script>
+</body>
+
+</html>
